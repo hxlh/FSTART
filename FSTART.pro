@@ -1,6 +1,5 @@
-QT       += core gui
+QT       += core gui sql
 #下面两个就可以使用 QtWin 将 HICON 转换为 QPixmap 了。
-QT += winextras
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 CONFIG += c++11
@@ -17,17 +16,33 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    closebutton.cpp \
+    columnlabel.cpp \
+    framelesswidget.cpp \
+    headbar.cpp \
     listviewitem.cpp \
+    listviewiteminfo.cpp \
     main.cpp \
+    mainpage.cpp \
     mainwindow.cpp \
+    minbutton.cpp \
     mylable.cpp \
-    mylistview.cpp
+    mylistview.cpp \
+    sqlctr.cpp
 
 HEADERS += \
+    closebutton.h \
+    columnlabel.h \
+    framelesswidget.h \
+    headbar.h \
     listviewitem.h \
+    listviewiteminfo.h \
+    mainpage.h \
     mainwindow.h \
+    minbutton.h \
     mylabel.h \
-    mylistview.h
+    mylistview.h \
+    sqlctr.h
 
 FORMS += \
     mainwindow.ui
@@ -36,3 +51,10 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    picture/closeButton.jpg \
+    picture/minButton.jpg
+
+RESOURCES += \
+    res.qrc

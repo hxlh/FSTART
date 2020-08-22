@@ -31,7 +31,6 @@ void MyLabel::mousePressEvent(QMouseEvent * event)
 {
     if(event->buttons()==Qt::LeftButton)
     {
-        emit openUrl_Sg(path);
+        emit clicked(path);
     }
-
 }

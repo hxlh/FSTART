@@ -12,7 +12,7 @@ public:
     explicit MyLabel(QLabel *parent = nullptr);
     void setText(QString name, QString path);
 signals:
-    void openUrl_Sg(QString path);
+    void clicked(QString path);
 private:
     QString name="";
     QString path="";
