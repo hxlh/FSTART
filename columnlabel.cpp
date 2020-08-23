@@ -36,3 +36,25 @@ QString ColumnLabel::getText()
 {
     return this->m_columnName;
 }
+void ColumnLabel::contextMenuEvent(QContextMenuEvent *e)
+{
+    QAction *removeAt=new QAction("删除栏目");
+    connect(removeAt,&QAction::triggered,this,[=](){
+       emit sg_remove(this->m_columnName);
+    });
+    QAction *addAt=new QAction("添加栏目");
+    connect(addAt,&QAction::triggered,this,[=](){
+        emit sg_add();
+    });
+    QMenu *menu=new QMenu();
+    menu->addAction(removeAt);
+    menu->addAction(addAt);
+    menu->exec(e->globalPos());
+    delete menu;
+    delete removeAt;
+    delete addAt;
+    menu=nullptr;
+    removeAt=nullptr;
+    addAt=nullptr;
+
+}

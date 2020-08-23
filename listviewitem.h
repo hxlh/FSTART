@@ -27,7 +27,7 @@ signals:
     void selectedItem(int index);
     void removeSign(int index);
 private:
-    void contextMenuEvent(QContextMenuEvent *e);
+
     QHBoxLayout *m_widgetLayout=nullptr;
     QLabel *m_icoLabel=nullptr;
     QPixmap *m_ico=nullptr;
@@ -37,7 +37,7 @@ private slots:
     void openUrl(QString path);
 protected:
     void paintEvent(QPaintEvent *event);
-
+    void contextMenuEvent(QContextMenuEvent *e);
     void enterEvent(QEvent *);
     void leaveEvent(QEvent *);
     void mousePressEvent(QMouseEvent * event);

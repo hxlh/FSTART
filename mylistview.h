@@ -17,6 +17,7 @@ public:
     QVBoxLayout *widget_layout;
     void setItemInfos(QList<ListViewItemInfo*>* itemInfos);
     void setCurrentColumn(QString columnName);
+    void clear();
 private:
 
     QVBoxLayout *m_layout;
@@ -24,7 +25,7 @@ private:
     QWidget *background=new QWidget();
     QList<ListViewItemInfo*>* itemInfos=nullptr;
     QString currentColumn="";
-    void clear();
+
 private slots:
     void adjustItemBackColor(int index);
     void removeItem(int index);

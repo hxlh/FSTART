@@ -32,11 +32,27 @@ SqlCtr::SqlCtr()
         */
         QSqlQuery q;
         QString cmd=QString("CREATE TABLE %1(ID INTEGER primary key AUTOINCREMENT,Column	varchar(100))").arg(column_table);
-        q.exec();
+        q.exec(cmd);
+        //添加初始项
+        cmd="INSERT INTO "+column_table+" VALUES(NULL,\'新建栏目\')";
+        q.exec(cmd);
+        cmd="CREATE TABLE 新建栏目_item"
+                "(ID INTEGER primary key AUTOINCREMENT,"
+                "GUID varchar(255),"
+                "FileName varchar(255),"
+                "FilePath varchar(255),"
+                "FileIcon varchar(255))";
+        q.exec(cmd);
     }else
     {
         init();
     }
+    QDir dir;
+    if(!dir.exists("ico"))
+    {
+        dir.mkdir("ico");
+    }
+
 }
 //创建数据库和创建column表
 void SqlCtr::init()
@@ -103,5 +119,15 @@ void SqlCtr::deleteColumnItem(QString columnName,QString guid)
     //DELETE FROM hxlh33333_item WHERE GUID=='{6706a198-e0b4-4279-8dde-5e4fc01b3a12}'
     QSqlQuery q;
     QString cmd=QString("DELETE FROM %1 WHERE GUID==\'%2\'").arg(columnName+"_item",guid);
+    q.exec(cmd);
+}
+void SqlCtr::deleteColumn(QString columnName)
+{
+    QSqlQuery q;
+    //清除items表
+    QString cmd=QString("DROP TABLE \'%1\'").arg(columnName+"_item");
+    q.exec(cmd);
+    //清除column字段
+    cmd=QString("DELETE FROM column_table WHERE \"Column\"==\'%1\'").arg(columnName);
     q.exec(cmd);
 }

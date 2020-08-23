@@ -113,8 +113,9 @@ void MyListView::dropEvent(QDropEvent *event)
         ListViewItemInfo *info=new ListViewItemInfo(fileName,filePath,savePath,uuidstr);
         //内存由iteminfos管理
         itemInfos->append(info);
+
         SqlCtr *ctr=SqlCtr::getInstance();
-        ctr->columnAdditem(currentColumn,*info);
+        ctr->columnAdditem(this->currentColumn,*info);
         addItem(*info);
     }
 }

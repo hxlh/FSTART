@@ -6,7 +6,7 @@
 #include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
-
+#include <QDir>
 #include <QDebug>
 
 #include "listviewiteminfo.h"
@@ -31,7 +31,7 @@ public:
     void addcolumn(QString columnName);
     void columnAdditem(QString columnName,const ListViewItemInfo &item);
     void deleteColumnItem(QString columnName,QString guid);
-
+    void deleteColumn(QString columnName);
 private:
     //SqlCtr(QObject *parent = nullptr);
     SqlCtr();
