@@ -10,6 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     InitUI();
     setWindowFlags (Qt::FramelessWindowHint);//去除边框
+    //设置窗体置顶
+    Qt::WindowFlags m_flags = windowFlags();
+    setWindowFlags(m_flags | Qt::WindowStaysOnTopHint);
 }
 
 MainWindow::~MainWindow()
@@ -61,5 +64,11 @@ void MainWindow::winMove_slo(int offsetX,int offsetY,int wx,int wy)
         //qDebug()<<wy;
 
 }
-
-
+int MainWindow::getHideFlag()
+{
+    return this->m_hideFlag;
+}
+void MainWindow::setHideFlag(int flag)
+{
+    this->m_hideFlag=flag;
+}

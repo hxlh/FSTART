@@ -13,8 +13,8 @@
 #include <QWidget>
 #include <QEvent>
 #include <QHoverEvent>
-
-
+#include <mainwindow.h>
+#include <QPropertyAnimation>
 class FramelessWidget : public QObject
 {
     Q_OBJECT

@@ -175,6 +175,45 @@ bool FramelessWidget::eventFilter(QObject *watched, QEvent *event)
             pressedRightBottom = false;
             widget->setCursor(Qt::ArrowCursor);
         }
+
+
+        //窗体自动贴边隐藏
+        if(event->type()==QEvent::Leave)
+        {
+            MainWindow *temp=(MainWindow*)this->widget;
+            if(temp->y()<=0)
+            {
+                temp->setHideFlag(1);
+                QPropertyAnimation *pp=new QPropertyAnimation;
+                pp->setTargetObject(temp);
+                pp->setPropertyName("geometry");
+                pp->setDuration(100);
+                pp->setStartValue(QRect(temp->x(),temp->y(),temp->width(),temp->height()));
+                int yy=5-temp->height();
+
+                pp->setEndValue(QRect(temp->x(),yy,temp->width(),temp->height()));
+                //pp->setEasingCurve(QEasingCurve::InQuad);
+                pp->start(QAbstractAnimation::DeleteWhenStopped);
+            }
+            qDebug()<<"鼠标离开了";
+        }else if(event->type()==QEvent::Enter)
+        {
+            MainWindow *temp=(MainWindow*)this->widget;
+            if(temp->getHideFlag()==1)
+            {
+                temp->setHideFlag(0);
+                QPropertyAnimation *pp=new QPropertyAnimation;
+                pp->setTargetObject(temp);
+                pp->setPropertyName("geometry");
+                pp->setDuration(100);
+                pp->setStartValue(QRect(temp->x(),temp->y(),temp->width(),temp->height()));
+                int yy=5-temp->height();
+
+                pp->setEndValue(QRect(temp->x(),0,temp->width(),temp->height()));
+                //pp->setEasingCurve(QEasingCurve::InQuad);
+                pp->start(QAbstractAnimation::DeleteWhenStopped);
+            }
+        }
     }
 
     return QObject::eventFilter(watched, event);

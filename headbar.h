@@ -6,6 +6,7 @@
 #include <QHBoxLayout>
 #include "closebutton.h"
 #include "minbutton.h"
+#include <QMouseEvent>
 
 #include "qdebug.h"
 class HeadBar : public QWidget
@@ -16,6 +17,7 @@ public:
 signals:
     void minWin_sg();
     void winMove_sg(int offsetX,int offsetY,int wx,int wy);
+
 private:
     QVBoxLayout *layout;
     QWidget *background=new QWidget();
@@ -30,6 +32,7 @@ private slots:
 protected:
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
+
 
 };
 

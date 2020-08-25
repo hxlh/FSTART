@@ -16,19 +16,17 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
     void InitUI();
-
+    int getHideFlag();
+    void setHideFlag(int flag);
 private slots:
     void minWin();
     void winMove_slo(int offsetX,int offsetY,int wx,int wy);
 private:
     Ui::MainWindow *ui;
+    //等于0是为不隐藏,否则为1
+    int m_hideFlag=0;
     //定位点
-    QRect *brcRect=nullptr;
-    QRect *blcRect=nullptr;
-    QRect *topRect=nullptr;
-    QRect *rRect=nullptr;
-    QRect *lRect=nullptr;
-    QRect *bRect=nullptr;
+
 protected:
 
 };
