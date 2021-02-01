@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "qlabel": "cpp",
+        "qmouseevent": "cpp",
+        "qpainter": "cpp",
+        "qstyleoption": "cpp",
+        "qapplication": "cpp"
+    }
+}
